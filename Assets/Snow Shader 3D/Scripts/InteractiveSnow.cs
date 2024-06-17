@@ -129,4 +129,9 @@ public class InteractiveSnow : MonoBehaviour
         _stepPrint = AssetDatabase.LoadAssetAtPath<Texture>("Assets/Snow Shader 3D/Texture/StepPrint.png");
         _snowMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Snow Shader 3D/Material/Snow.mat");
     }
+
+    private void OnDestroy()
+    {
+        SpawnersController.indexX--;
+    }
 }

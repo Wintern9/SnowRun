@@ -27,6 +27,8 @@ public class SpawnerController : MonoBehaviour
         InstantiateObject();
     }
 
+    int index = 0;
+
     void InstantiateObject()
     {
         GameObject newObject = new GameObject();
@@ -35,5 +37,6 @@ public class SpawnerController : MonoBehaviour
         t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
         WorldPositionSpawn += 20f;
         GameObject obj = Instantiate(prefabsSpawn[Random.Range(0, prefabsSpawn.Length)], t);
+        obj.name = obj.name + index++;
     }
 }
