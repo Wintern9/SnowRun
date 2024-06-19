@@ -50,7 +50,7 @@
                 fixed4 col = tex2D(_CameraDepthTexture, i.uv);
 				float depth = UNITY_SAMPLE_DEPTH(col);
 				depth = Linear01Depth(depth);
-				return lerp(_NearColor, _FarColor, depth);
+                return lerp(colTex, _FarColor, depth);
             }
             ENDCG
         }

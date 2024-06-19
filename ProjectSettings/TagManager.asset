@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerModel
   - TransformPoint
+  - log
   layers:
   - Default
   - TransparentFX

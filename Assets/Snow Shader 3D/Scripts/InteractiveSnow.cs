@@ -125,9 +125,9 @@ public class InteractiveSnow : MonoBehaviour
     }
 
     public void SetShader(){
-        _snowHeightMapUpdate = AssetDatabase.LoadAssetAtPath<Shader>("Assets/Snow Shader 3D/Shaders/SnowHeightMapUpdate.shader");
-        _stepPrint = AssetDatabase.LoadAssetAtPath<Texture>("Assets/Snow Shader 3D/Texture/StepPrint.png");
-        _snowMaterial = AssetDatabase.LoadAssetAtPath<Material>("Assets/Snow Shader 3D/Material/Snow.mat");
+        _snowHeightMapUpdate = Resources.Load<Shader>("Shaders/SnowHeightMapUpdate");
+        _stepPrint = Resources.Load<Texture>("tireprint");
+        _snowMaterial = Resources.Load<Material>("Material/Snow");
     }
 
     private void OnDestroy()

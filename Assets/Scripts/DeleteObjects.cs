@@ -6,7 +6,8 @@ public class DeleteObjects : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject.transform.root.gameObject);
+        if(!other.CompareTag("Player"))
+            Destroy(other.gameObject.transform.root.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

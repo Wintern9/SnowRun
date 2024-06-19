@@ -3,11 +3,11 @@ using UnityEngine;
 public class SpawnersController : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefabsSpawn;
-    static public int indexX = 0;
+    static public int indexX = 5;
 
     void Start()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 5; i++)
         {
             CreateTerrain();
             InstantiateObject();
@@ -16,7 +16,7 @@ public class SpawnersController : MonoBehaviour
     
     void Update()
     {
-        if (indexX < 20)
+        if (indexX < 5)
         {
             CreateTerrain();
             InstantiateObject();
