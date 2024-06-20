@@ -11,16 +11,8 @@ public class SpawnersController : MonoCache
         for(int i = 0; i < 5; i++)
         {
             CreateTerrain();
-            for (int j = 0; j < 5; j++)
-            {
-                InstantiateObject();
-            }
+            InstantiateObject();
         }
-    }
-
-    protected override void Run()
-    {
-        InstantiateObject();
     }
 
     protected override void LateRun()
@@ -28,6 +20,7 @@ public class SpawnersController : MonoCache
         if (indexX < 5)
         {
             CreateTerrain();
+            InstantiateObject();
             indexX++;
         }
     }
@@ -72,18 +65,16 @@ public class SpawnersController : MonoCache
         Transform t = terrainObject.transform;
         t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
         WorldPositionSpawn += WorldPosition;
-        indexSpawn = 6;
     }
 
-    int indexSpawn = 6;
     void InstantiateObject()
     {
-        if(indexSpawn > 0)
+        if (prefabsSpawn.Length != 0)
         {
             GameObject newObject = new GameObject();
             Transform t = newObject.transform;
 
-            t.position = new Vector3(WorldPositionSpawn - 25 + 5 * indexSpawn, 0f, 0f);
+            t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
             GameObject obj = Instantiate(prefabsSpawn[Random.Range(0, prefabsSpawn.Length)], t);
         }
     }

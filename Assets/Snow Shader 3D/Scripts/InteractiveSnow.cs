@@ -125,7 +125,7 @@ public class InteractiveSnow : MonoBehaviour
 
     public void SetShader(){
         _snowHeightMapUpdate = Resources.Load<Shader>("Shaders/SnowHeightMapUpdate");
-        _stepPrint = Resources.Load<Texture>("tireprint");
+        _stepPrint = Resources.Load<Texture>("Brush");
         _snowMaterial = Resources.Load<Material>("Material/Snow");
     }
 

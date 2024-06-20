@@ -4647,7 +4647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsSpawn:
-  - {fileID: 7726197944724226484, guid: 53ba37043f1c3914692dde8b81c9a7cd, type: 3}
+  - {fileID: 7726197944724226484, guid: f6bb8ee6eccfd4a4b9b63c06383c57bc, type: 3}
 --- !u!114 &677099506
 MonoBehaviour:
   m_ObjectHideFlags: 0
