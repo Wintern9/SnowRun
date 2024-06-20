@@ -66,34 +66,37 @@ public class InteractiveSnow : MonoBehaviour
         _heightMapUpdate = CreateHeightMapUpdate(_snowHeightMapUpdate, _stepPrint);
         _snowHeightMap = CreateHeightMap(512, 512, _heightMapUpdate);
 
-        var terrain = gameObject.GetComponent<Terrain>();
-        terrain.materialTemplate = material;
-        terrain.materialTemplate.SetTexture(HeightMap, _snowHeightMap);
+        // Ensure the platform (gameObject) has a MeshRenderer
+        var meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        if (meshRenderer == null)
+        {
+            meshRenderer = gameObject.AddComponent<MeshRenderer>();
+        }
+
+        meshRenderer.material = material;
+        meshRenderer.material.SetTexture(HeightMap, _snowHeightMap);
 
         _snowHeightMap.Initialize();
     }
 
     private void DrawTrails()
     {
-
+        // Example: Assuming you have a single trail position for demonstration
         _trailsPositions = new Transform[1];
         _trailsPositions[0] = GameObject.FindGameObjectWithTag("TransformPoint").transform;
-
 
         var trail = _trailsPositions[_index];
 
         Ray ray = new Ray(trail.transform.position, Vector3.down);
 
-        if (Physics.Raycast(ray, out RaycastHit hit, _drawDistance))
+        // Example: Raycast against the platform (gameObject)
+        if (Physics.Raycast(ray, out RaycastHit hit, _drawDistance) && hit.collider.gameObject == gameObject)
         {
-            if (hit.collider.name == gameObject.name)
-            {
-                Vector2 hitTextureCoord = hit.textureCoord;
-                float angle = trail.transform.rotation.eulerAngles.y; // texture rotation angle
+            Vector2 hitTextureCoord = hit.textureCoord;
+            float angle = trail.transform.rotation.eulerAngles.y; // texture rotation angle
 
-                _heightMapUpdate.SetVector(DrawPosition, hitTextureCoord);
-                _heightMapUpdate.SetFloat(DrawAngle, angle * Mathf.Deg2Rad);
-            }
+            _heightMapUpdate.SetVector(DrawPosition, hitTextureCoord);
+            _heightMapUpdate.SetFloat(DrawAngle, angle * Mathf.Deg2Rad);
         }
 
         _index++;
@@ -123,7 +126,8 @@ public class InteractiveSnow : MonoBehaviour
         return material;
     }
 
-    public void SetShader(){
+    public void SetShader()
+    {
         _snowHeightMapUpdate = Resources.Load<Shader>("Shaders/SnowHeightMapUpdate");
         _stepPrint = Resources.Load<Texture>("Brush");
         _snowMaterial = Resources.Load<Material>("Material/Snow");
@@ -131,6 +135,7 @@ public class InteractiveSnow : MonoBehaviour
 
     private void OnDestroy()
     {
+        // Ensure that any cleanup logic is appropriately handled
         SpawnersController.indexX--;
     }
 }
