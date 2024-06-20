@@ -1,6 +1,7 @@
 using UnityEngine;
+using NTC.MonoCache;
 
-public class SpawnersController : MonoBehaviour
+public class SpawnersController : MonoCache
 {
     [SerializeField] private GameObject[] prefabsSpawn;
     static public int indexX = 5;
@@ -10,21 +11,29 @@ public class SpawnersController : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             CreateTerrain();
-            InstantiateObject();
+            for (int j = 0; j < 5; j++)
+            {
+                InstantiateObject();
+            }
         }
     }
-    
-    void Update()
+
+    protected override void Run()
+    {
+        InstantiateObject();
+    }
+
+    protected override void LateRun()
     {
         if (indexX < 5)
         {
             CreateTerrain();
-            InstantiateObject();
             indexX++;
         }
     }
 
     float WorldPositionSpawn = 20;
+    float WorldPosition = 19.9f;
 
     static int index = 0;
 
@@ -62,15 +71,20 @@ public class SpawnersController : MonoBehaviour
 
         Transform t = terrainObject.transform;
         t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
-        WorldPositionSpawn += 20f;
+        WorldPositionSpawn += WorldPosition;
+        indexSpawn = 6;
     }
 
+    int indexSpawn = 6;
     void InstantiateObject()
     {
-        GameObject newObject = new GameObject();
-        Transform t = newObject.transform;
+        if(indexSpawn > 0)
+        {
+            GameObject newObject = new GameObject();
+            Transform t = newObject.transform;
 
-        t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
-        GameObject obj = Instantiate(prefabsSpawn[Random.Range(0, prefabsSpawn.Length)], t);
+            t.position = new Vector3(WorldPositionSpawn - 25 + 5 * indexSpawn, 0f, 0f);
+            GameObject obj = Instantiate(prefabsSpawn[Random.Range(0, prefabsSpawn.Length)], t);
+        }
     }
 }

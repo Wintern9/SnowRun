@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using NTC.MonoCache;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : MonoCache
 {
     [SerializeField] private GameObject player;
 
@@ -17,7 +16,7 @@ public class CameraMovement : MonoBehaviour
         vec = gameObject.transform.position;
     }
 
-    void Update()
+    protected override void LateRun()
     {
         vec.x = vec3.x + (player.transform.position.x - vec2.x);
         gameObject.transform.position = vec;

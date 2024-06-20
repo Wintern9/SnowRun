@@ -4611,6 +4611,7 @@ GameObject:
   - component: {fileID: 677099504}
   - component: {fileID: 677099505}
   - component: {fileID: 677099506}
+  - component: {fileID: 677099507}
   m_Layer: 0
   m_Name: GameControllers
   m_TagString: Untagged
@@ -4647,9 +4648,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsSpawn:
   - {fileID: 7726197944724226484, guid: 53ba37043f1c3914692dde8b81c9a7cd, type: 3}
-  - {fileID: 7726197944724226484, guid: 2bc677745845638458031783fc3c5dcb, type: 3}
-  - {fileID: 7726197944724226484, guid: 9e2d180987f42fb47a3899285e156aa7, type: 3}
-  - {fileID: 7726197944724226484, guid: 4e304c82c6d9a32498f36f2bedab5f99, type: 3}
 --- !u!114 &677099506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4664,6 +4662,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ParticleWind: {fileID: 1524566482}
   Camera: {fileID: 963194227}
+--- !u!114 &677099507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677099502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc26b7433b003b4fa50fd9f2ca64e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

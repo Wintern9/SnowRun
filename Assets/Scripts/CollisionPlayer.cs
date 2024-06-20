@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using NTC.MonoCache;
 
-public class CollisionPlayer : MonoBehaviour
+public class CollisionPlayer : MonoCache
 {
     [SerializeField] private GameObject ColliderDeletes;
     [SerializeField] private GameObject UIRestart;
@@ -11,20 +10,6 @@ public class CollisionPlayer : MonoBehaviour
     void Start()
     {
         rg = gameObject.GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("log"))
-        {
-
-        }
     }
 
     private void OnTriggerExit(Collider other)

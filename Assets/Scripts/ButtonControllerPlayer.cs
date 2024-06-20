@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using NTC.MonoCache;
 
-public class ButtonControllerPlayer : MonoBehaviour
+public class ButtonControllerPlayer : MonoCache
 {
     static public VectorMovement playerVector = new VectorMovement();
 
@@ -30,7 +29,7 @@ public class ButtonControllerPlayer : MonoBehaviour
         isLeftButtonPressed = false;
     }
 
-    void LateUpdate()
+    protected override void LateRun()
     {
         if((isLeftButtonPressed && isRightButtonPressed) || (isLeftButtonPressed == false && isRightButtonPressed == false)) {
             playerVector.x = 0;
