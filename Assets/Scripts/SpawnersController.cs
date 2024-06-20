@@ -69,13 +69,10 @@ public class SpawnersController : MonoCache
 
     void InstantiateObject()
     {
-        if (prefabsSpawn.Length != 0)
-        {
-            GameObject newObject = new GameObject();
-            Transform t = newObject.transform;
+        GameObject newObject = new GameObject();
+        Transform t = newObject.transform;
 
-            t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
-            GameObject obj = Instantiate(prefabsSpawn[Random.Range(0, prefabsSpawn.Length)], t);
-        }
+        t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
+        GameObject obj = Instantiate(prefabsSpawn[Random.Range(0, prefabsSpawn.Length)], t);
     }
 }
