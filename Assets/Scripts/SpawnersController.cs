@@ -4,13 +4,14 @@ using NTC.MonoCache;
 public class SpawnersController : MonoCache
 {
     [SerializeField] private GameObject[] prefabsSpawn;
+    [SerializeField] private GameObject PlatfromPrefab;
     static public int indexX = 5;
 
     void Start()
     {
         for(int i = 0; i < 5; i++)
         {
-            CreateTerrain();
+            InstantiatePlatform();
             InstantiateObject();
         }
     }
@@ -19,7 +20,8 @@ public class SpawnersController : MonoCache
     {
         if (indexX < 5)
         {
-            CreateTerrain();
+            //CreateTerrain();
+            InstantiatePlatform();
             InstantiateObject();
             indexX++;
         }
@@ -65,6 +67,16 @@ public class SpawnersController : MonoCache
         Transform t = terrainObject.transform;
         t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
         WorldPositionSpawn += WorldPosition;
+    }
+
+    void InstantiatePlatform()
+    {
+        GameObject newObject = new GameObject();
+        Transform t = newObject.transform;
+
+        t.position = new Vector3(WorldPositionSpawn, 0f, 0f);
+        WorldPositionSpawn += WorldPosition;
+        GameObject obj = Instantiate(PlatfromPrefab, t);
     }
 
     void InstantiateObject()
