@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
     [SerializeField] private float moveSpeed = 5f;
+    static public float moveSpeedValue = 5f;
     [SerializeField] private float moveHorizontalSpeed = 3f;
     [SerializeField] private float moveRotationSpeed = 1f;
     [SerializeField] private GameObject PlayerModel;
@@ -28,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = GetVectorMovement().x;
 
-        Vector3 movement = transform.up * moveSpeed * Time.deltaTime;
+        Vector3 movement = transform.up * -moveSpeedValue * Time.deltaTime;
 
         movement.z = Mathf.Lerp(0f, horizontalInput * moveHorizontalSpeed * Time.deltaTime, 1f);
 
